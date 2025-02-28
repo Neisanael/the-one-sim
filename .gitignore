@@ -10,7 +10,7 @@ doc/stylesheet.css
 doc/resources/*.gif
 doc/package-list
 
-# Eclipse IDE files
+# IDE files
 .classpath
 .project
 target

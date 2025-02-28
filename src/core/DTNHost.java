@@ -25,7 +25,7 @@ public class DTNHost implements Comparable<DTNHost> {
 	private Coord location; 	// where is the host
 	private Coord destination;	// where is it going
 
-	private MessageRouter router;
+	protected MessageRouter router;
 	private MovementModel movement;
 	private Path path;
 	private double speed;

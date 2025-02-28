@@ -4,6 +4,7 @@
  */
 package core;
 
+import core.Publisher.PublisherHost;
 import input.EventQueue;
 import input.EventQueueHandler;
 
@@ -395,9 +396,12 @@ public class SimScenario implements Serializable {
 
 				// prototypes are given to new DTNHost which replicates
 				// new instances of movement model and message router
-				DTNHost host = new DTNHost(this.messageListeners,
-						this.movementListeners,	gid, interfaces, comBus,
-						mmProto, mRouterProto);
+				DTNHost host;
+				if (gid.contains("Publisher")) {
+					host = new PublisherHost(this.messageListeners, this.movementListeners, gid, interfaces, comBus, mmProto, mRouterProto);
+				} else {
+					host = new DTNHost(this.messageListeners, this.movementListeners, gid, interfaces, comBus, mmProto, mRouterProto);
+				}
 				hosts.add(host);
 			}
 		}
