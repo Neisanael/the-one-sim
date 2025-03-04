@@ -528,8 +528,7 @@ public abstract class MessageRouter {
 			Collections.shuffle(list, new Random(SimClock.getIntTime()));
 			break;
 		case Q_MODE_FIFO:
-			Collections.sort(list,
-					new Comparator() {
+			Collections.sort(list, new Comparator() {
 				/** Compares two tuples by their messages' receiving time */
 				public int compare(Object o1, Object o2) {
 					double diff;
