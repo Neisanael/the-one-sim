@@ -23,7 +23,7 @@ public class LifeRouter extends ActiveRouter {
 	 * is accepted for transfer and kept in the buffer.
 	 */
 	public static final String NM_COUNT_S = "nmcount";
-	private int countRange[];
+	private final int[] countRange;
 
 	/**
 	 * Constructor. Creates a new message router based on the settings in

@@ -56,7 +56,7 @@ public class LinearMovement extends MovementModel {
 	 */
 	public LinearMovement(Settings s) {
 		super(s);
-		int coords[];
+		int[] coords;
 
 		coords = s.getCsvInts(LINEAR_MOVEMENT_NS + START_LOCATION_S, 2);
 		this.startLoc = new Coord(coords[0], coords[1]);

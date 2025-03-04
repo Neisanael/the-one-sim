@@ -26,7 +26,7 @@ public class GridLocation extends MovementModel {
 	 * -setting ({@value}). Two values: x,y */
 	public static final String LOCATION_S = "location";
 
-	private double startCoords[];
+	private double[] startCoords;
 	private int rows;
 	private int cols;
 	private double spacing;

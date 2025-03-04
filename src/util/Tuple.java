@@ -8,8 +8,8 @@ package util;
  * A generic key-value tuple.
  */
 public class Tuple<K,V>  {
-	private K key;
-	private V value;
+	private final K key;
+	private final V value;
 
 	/**
 	 * Creates a new tuple.

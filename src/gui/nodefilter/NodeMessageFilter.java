@@ -11,7 +11,7 @@ import core.DTNHost;
  * Node filter that filters nodes by the messages they have in their buffer
  */
 public class NodeMessageFilter implements NodeFilter {
-	private String messageId;
+	private final String messageId;
 
 	/**
 	 * Creates a new filter with the given message ID

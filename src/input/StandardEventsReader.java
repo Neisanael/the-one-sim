@@ -67,7 +67,7 @@ public class StandardEventsReader implements ExternalEventsReader {
 	public static final String ALL_MESSAGES_ID = "*";
 
 	//private Scanner scanner;
-	private BufferedReader reader;
+	private final BufferedReader reader;
 
 	public StandardEventsReader(File eventsFile){
 		try {

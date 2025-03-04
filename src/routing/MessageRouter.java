@@ -100,7 +100,7 @@ public abstract class MessageRouter {
 	/** TTL for all messages */
 	protected int msgTtl;
 	/** Queue mode for sending messages */
-	private int sendQueueMode;
+	private final int sendQueueMode;
 
 	/** applications attached to the host */
 	private HashMap<String, Collection<Application>> applications = null;
@@ -134,9 +134,9 @@ public abstract class MessageRouter {
 
 			String mode = s.getSetting(SEND_QUEUE_MODE_S);
 
-			if (mode.trim().toUpperCase().equals(STR_Q_MODE_FIFO)) {
+			if (mode.trim().equalsIgnoreCase(STR_Q_MODE_FIFO)) {
 				this.sendQueueMode = Q_MODE_FIFO;
-			} else if (mode.trim().toUpperCase().equals(STR_Q_MODE_RANDOM)){
+			} else if (mode.trim().equalsIgnoreCase(STR_Q_MODE_RANDOM)){
 				this.sendQueueMode = Q_MODE_RANDOM;
 			} else {
 				this.sendQueueMode = s.getInt(SEND_QUEUE_MODE_S);
@@ -305,7 +305,7 @@ public abstract class MessageRouter {
 
 	/**
 	 * Start sending a message to another host.
-	 * @param id Id of the message to send
+	 * @param id The id of the message to send
 	 * @param to The host to send the message to
 	 */
 	public void sendMessage(String id, DTNHost to) {
@@ -319,7 +319,7 @@ public abstract class MessageRouter {
 	}
 
 	/**
-	 * Requests for deliverable message from this router to be sent trough a
+	 * Requests for deliverable message from this router to be sent through a
 	 * connection.
 	 * @param con The connection to send the messages trough
 	 * @return True if this router started a transfer, false if not
@@ -353,7 +353,7 @@ public abstract class MessageRouter {
 	 * This method should be called (on the receiving host) after a message
 	 * was successfully transferred. The transferred message is put to the
 	 * message buffer unless this host is the final recipient of the message.
-	 * @param id Id of the transferred message
+	 * @param id id of the transferred message
 	 * @param from Host the message was from (previous hop)
 	 * @return The message that this host received
 	 */
@@ -394,7 +394,7 @@ public abstract class MessageRouter {
 			this.deliveredMessages.put(id, aMessage);
 		} else if (outgoing == null) {
 			// Blacklist messages that an app wants to drop.
-			// Otherwise the peer will just try to send it back again.
+			// Otherwise, the peer will just try to send it back again.
 			this.blacklistedMessages.put(id, null);
 		}
 
@@ -408,7 +408,7 @@ public abstract class MessageRouter {
 
 	/**
 	 * Puts a message to incoming messages buffer. Two messages with the
-	 * same ID are distinguished by the from host.
+	 * same ID are distinguished by the form host.
 	 * @param m The message to put
 	 * @param from Who the message was from (previous hop).
 	 */
@@ -467,7 +467,7 @@ public abstract class MessageRouter {
 	/**
 	 * This method should be called (on the receiving host) when a message
 	 * transfer was aborted.
-	 * @param id Id of the message that was being transferred
+	 * @param id id of the message that was being transferred
 	 * @param from Host the message was from (previous hop)
 	 * @param bytesRemaining Nrof bytes that were left before the transfer
 	 * would have been ready; or -1 if the number of bytes is not known
@@ -528,8 +528,7 @@ public abstract class MessageRouter {
 			Collections.shuffle(list, new Random(SimClock.getIntTime()));
 			break;
 		case Q_MODE_FIFO:
-			Collections.sort(list,
-					new Comparator() {
+			Collections.sort(list, new Comparator() {
 				/** Compares two tuples by their messages' receiving time */
 				public int compare(Object o1, Object o2) {
 					double diff;

@@ -30,7 +30,7 @@ import core.Settings;
  */
 @SuppressWarnings("serial")
 public class NodeChooser extends JPanel implements ActionListener {
-	private DTNSimGUI gui;
+	private final DTNSimGUI gui;
 	/** the maximum number of allNodes to show in the list per page */
 	public static final int MAX_NODE_COUNT = 500;
 	private Timer refreshTimer;
@@ -42,7 +42,7 @@ public class NodeChooser extends JPanel implements ActionListener {
 	public static final String NODE_MESSAGE_FILTERS_S = "nodeMessageFilters";
 
 	private static final String HOST_KEY = "host";
-	private List<DTNHost> allNodes;
+	private final List<DTNHost> allNodes;
 	private List<DTNHost> shownNodes;
 
 	private JComboBox<String> groupChooser;
@@ -124,8 +124,8 @@ public class NodeChooser extends JPanel implements ActionListener {
 
 		if (nodes.size() == oldShownNodes.size() &&
 			oldShownNodes.containsAll(nodes)) {
-			return; /* nothing to update */
-		} else {
+            /* nothing to update */
+        } else {
 			this.shownNodes = nodes;
 			updateList();
 			NodeGraphic.setHighlightedNodes(nodes);
@@ -197,9 +197,8 @@ public class NodeChooser extends JPanel implements ActionListener {
 	 * Action listener method for buttons and node set chooser
 	 */
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() instanceof JButton) {
-			JButton source = (JButton)e.getSource();
-			DTNHost host = (DTNHost)source.getClientProperty(HOST_KEY);
+		if (e.getSource() instanceof JButton source) {
+            DTNHost host = (DTNHost)source.getClientProperty(HOST_KEY);
 			gui.setFocus(host);
 		}
 		else if (e.getSource() == this.groupChooser) {

@@ -39,15 +39,15 @@ import core.SettingsError;
 public class ExternalMovementReader {
 	/* Prefix for comment lines (lines starting with this are ignored) */
 	public static final String COMMENT_PREFIX = "#";
-	private Scanner scanner;
+	private final Scanner scanner;
 	private double lastTimeStamp = -1;
 	private String lastLine;
-	private double minTime;
-	private double maxTime;
-	private double minX;
-	private double maxX;
-	private double minY;
-	private double maxY;
+	private final double minTime;
+	private final double maxTime;
+	private final double minX;
+	private final double maxX;
+	private final double minY;
+	private final double maxY;
 	private boolean normalize;
 
 
@@ -102,7 +102,7 @@ public class ExternalMovementReader {
 	/**
 	 * Reads all new id-coordinate tuples that belong to the same time instance
 	 * @return A list of tuples or empty list if there were no more moves
-	 * @throws SettingError if an invalid line was read
+	 * @throws SettingsError if an invalid line was read
 	 */
 	public List<Tuple<String, Coord>> readNextMovements() {
 		ArrayList<Tuple<String, Coord>> moves =

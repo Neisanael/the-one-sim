@@ -25,11 +25,11 @@ public class TestUtils {
 	private List<ConnectionListener> conListeners;
 	private List<MessageListener> msgListeners;
 	private String groupId = "h";
-	private List<DTNHost> allHosts;
+	private final List<DTNHost> allHosts;
 	private MessageRouter mr;
 
-	private ModuleCommunicationBus comBus;
-	private TestSettings settings;
+	private final ModuleCommunicationBus comBus;
+	private final TestSettings settings;
 
 	public static String IFACE_NS = "interface";
 

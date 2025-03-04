@@ -40,8 +40,8 @@ public class MovementListenerTest {
 	//========================================================================//
 	// Tests
 	//========================================================================//
-	private static int INITIAL_LOC_TEST_NODE_COUNT = 10;
-	private static String INITIAL_LOC_TEST_SETTINGS =
+	private static final int INITIAL_LOC_TEST_NODE_COUNT = 10;
+	private static final String INITIAL_LOC_TEST_SETTINGS =
 			"Scenario.name = InitialLocTest\n" +
 			"Scenario.endTime = 600\n" +
 			"Scenario.updateInterval = 0.1\n" +

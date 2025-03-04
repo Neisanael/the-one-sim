@@ -111,8 +111,8 @@ public class InterferenceLimitedInterface extends NetworkInterface {
 			if (con.getMessage() != null) {
 				numberOfTransmissions++;
 			}
-			if (((InterferenceLimitedInterface)con.getOtherInterface(this)).
-					isTransferring() == true) {
+			if (con.getOtherInterface(this).
+                    isTransferring()) {
 				numberOfActive++;
 			}
 		}

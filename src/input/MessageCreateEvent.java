@@ -6,14 +6,15 @@ package input;
 
 import core.DTNHost;
 import core.Message;
+import core.Publisher.PublisherHost;
 import core.World;
 
 /**
  * External event for creating a message.
  */
 public class MessageCreateEvent extends MessageEvent {
-	private int size;
-	private int responseSize;
+	private final int size;
+	private final int responseSize;
 
 	/**
 	 * Creates a message creation event with a optional response request
@@ -43,7 +44,12 @@ public class MessageCreateEvent extends MessageEvent {
 
 		Message m = new Message(from, to, this.id, this.size);
 		m.setResponseSize(this.responseSize);
-		from.createNewMessage(m);
+		if(from instanceof PublisherHost publisherHost){
+            // Call the createNewMessage method
+			publisherHost.createNewMessage(m);
+		}else{
+			from.createNewMessage(m);
+		}
 	}
 
 	@Override

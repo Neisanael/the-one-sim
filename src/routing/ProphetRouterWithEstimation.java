@@ -63,13 +63,13 @@ public class ProphetRouterWithEstimation extends ActiveRouter {
 	public static final String BETA_S = "beta";
 
 	/** values of parameter settings */
-	private double beta;
+	private final double beta;
 	private double gamma;
 	private double pinit;
 
 	/** value of time scale variable */
-	private int timescale;
-	private double ptavg;
+	private final int timescale;
+	private final double ptavg;
 
 	/** delivery predictabilities */
 	private Map<DTNHost, Double> preds;
@@ -210,7 +210,7 @@ public class ProphetRouterWithEstimation extends ActiveRouter {
 		}
 
 		if (meanIET == 0) {
-			System.out.printf("Mean IET == 0\n");
+			System.out.print("Mean IET == 0\n");
 			return;
 		}
 
@@ -221,8 +221,8 @@ public class ProphetRouterWithEstimation extends ActiveRouter {
 		zetadiff = .1;
 		ozeta = 0;
 		cond = false;
-		ntarg = (int)Math.ceil((double)timescale/(double)meanIET);
-		while (cond == false) {
+		ntarg = (int)Math.ceil((double)timescale/ meanIET);
+		while (!cond) {
 			pstable = (1-zeta)/(Math.exp(b*meanIET)-zeta);
 			pavg = (1/(b*meanIET)) * (1-zeta*(1-pstable)) *
 			(1- Math.exp( -b*meanIET));
@@ -267,7 +267,7 @@ public class ProphetRouterWithEstimation extends ActiveRouter {
 			ob = 0;
 			zcount = 0; // if 100 iterations won't help, lets increase zeta...
 			bcheck = false;
-			while (bcheck == false) {
+			while (!bcheck) {
 
 				pstable = (1-zeta)/(Math.exp(b*meanIET)-zeta);
 				pnzero = Math.exp(-b*meanIET) * (1-zeta) *

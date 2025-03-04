@@ -66,7 +66,7 @@ public abstract class Report {
 	private double outputInterval;
 	private double lastReportTime;
 	private String outFileName;
-	private String scenarioName;
+	private final String scenarioName;
 
 	/**
 	 * Constructor.
@@ -162,11 +162,7 @@ public abstract class Report {
 			if (!createDirs(directory.getParentFile())) {
 				return false;
 			}
-			if (!directory.mkdir()) {
-				return false;
-			} else {
-				return true;
-			}
+            return directory.mkdir();
 		}
 	}
 
