@@ -64,8 +64,8 @@ public class SimMenuBar extends JMenuBar implements ActionListener {
 	private JMenuItem clearNodeFilters;
 
 	private JMenuItem about;
-	private PlayField field;
-	private NodeChooser chooser;
+	private final PlayField field;
+	private final NodeChooser chooser;
 
 	/** Show node name string -setting id ({@value})*/
 	public static final String SHOW_NODE_NAMESTR_S = "showNodeNameStrings";
@@ -180,7 +180,7 @@ public class SimMenuBar extends JMenuBar implements ActionListener {
 	}
 
 	private String getFilterString(String message) {
-		return (String)JOptionPane.showInputDialog(
+		return JOptionPane.showInputDialog(
                 this, message, "Filter input", JOptionPane.PLAIN_MESSAGE);
 	}
 

@@ -62,7 +62,7 @@ extends SamplingReport {
 	}
 
 	@Override
-	public final void done() {
+	public void done() {
 		final int nodeCount = this.samples.length;
 
 		for (int i = 0; i < nodeCount; i++) {
@@ -78,7 +78,7 @@ extends SamplingReport {
 			}
 
 			final double rg = Math.sqrt(1.0 / sampleCount * d_squared);
-			super.write("" + i + " " + this.nodeNames[i] + " "
+			super.write(i + " " + this.nodeNames[i] + " "
 					+ geomCenter[0] + " " + geomCenter[1] + " "
 					+ rg);
 		}

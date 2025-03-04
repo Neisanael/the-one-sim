@@ -17,10 +17,10 @@ public class CoordTest extends TestCase {
 		Coord c5 = new Coord(-2,-3);
 		Coord c6 = new Coord(-2,-3);
 
-		assertTrue(c1.hashCode() == c2.hashCode());
+        assertEquals(c1.hashCode(), c2.hashCode());
 		assertTrue(c1.hashCode() != c3.hashCode());
 		assertTrue(c3.hashCode() != c4.hashCode());
-		assertTrue(c5.hashCode() == c6.hashCode());
+        assertEquals(c5.hashCode(), c6.hashCode());
 		assertTrue(c3.hashCode() != c5.hashCode());
 
 		c5.translate(1, 1);

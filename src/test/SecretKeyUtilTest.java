@@ -18,14 +18,14 @@ public class SecretKeyUtilTest extends TestCase {
     @Test
     public void testSecretKeyLength() {
         int keySize = 32;
-        String secretKey = secretKeyUtil.generateSecretKey(keySize);
+        String secretKey = SecretKeyUtil.generateSecretKey(keySize);
         byte[] decodedKey = Base64.getDecoder().decode(secretKey);
         assertEquals(keySize, decodedKey.length);
     }
 
     @Test
     public void testSecretKeyNotNull() {
-        String secretKey = secretKeyUtil.generateSecretKey(32);
+        String secretKey = SecretKeyUtil.generateSecretKey(32);
         assertNotNull(secretKey);
         assertFalse(secretKey.isEmpty());
     }

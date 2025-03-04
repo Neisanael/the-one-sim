@@ -54,7 +54,7 @@ import core.SettingsError;
  */
 public class ExternalPathMovementReader {
 	 // Singletons are evil, but I'm lazy
-	private static Map<String, ExternalPathMovementReader> singletons =
+	private static final Map<String, ExternalPathMovementReader> singletons =
 		new HashMap<String, ExternalPathMovementReader>();
 
 	/**
@@ -81,13 +81,13 @@ public class ExternalPathMovementReader {
 
 	// Settings
 	private boolean normalize = true;
-	private double minTime;
-	private double maxTime;
-	private double minX;
-	private double maxX;
-	private double minY;
-	private double maxY;
-	private int	maxID;
+	private final double minTime;
+	private final double maxTime;
+	private final double minX;
+	private final double maxX;
+	private final double minY;
+	private final double maxY;
+	private final int	maxID;
 
 	/**
 	 * Creates a new reader by parsing the given files and building the internal

@@ -244,11 +244,11 @@ abstract public class NetworkInterface implements ModuleCommunicationListener {
 			active = false;
 		}
 
-		if (active == false && this.transmitRange > 0) {
+		if (!active && this.transmitRange > 0) {
 			/* not active -> make range 0 */
 			this.oldTransmitRange = this.transmitRange;
 			host.getComBus().updateProperty(RANGE_ID, 0.0);
-		} else if (active == true && this.transmitRange == 0.0) {
+		} else if (active && this.transmitRange == 0.0) {
 			/* active, but range == 0 -> restore range  */
 			host.getComBus().updateProperty(RANGE_ID,
 					this.oldTransmitRange);
@@ -275,9 +275,7 @@ abstract public class NetworkInterface implements ModuleCommunicationListener {
 				lastScanTime = simTime; /* time to start the next scan round */
 				return true;
 			}
-			else if (simTime != lastScanTime ){
-				return false; /* not in the scan round */
-			}
+			else return simTime == lastScanTime; /* not in the scan round */
 		}
 		/* interval == 0 or still in the same scan round as when
 		   last time asked */

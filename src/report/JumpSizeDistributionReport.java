@@ -94,7 +94,7 @@ extends SamplingReport {
 	}
 
 	@Override
-	public final void done() {
+	public void done() {
 		if (this.outputRawData) {
 			for (int host = 0; host < this.samples.length; host++) {
 				final int sampleCount = this.sampleCounts[host];
@@ -128,7 +128,7 @@ extends SamplingReport {
 			final double jumpLength = (i + 0.5) * bucketWidth;
 			final double density
 					= 1.0 * frequencies[i] / (totalSamples * bucketWidth);
-			final String densityLine = "" + jumpLength + " " + density + " "
+			final String densityLine = jumpLength + " " + density + " "
 					+ frequencies[i];
 			super.write(densityLine);
 		}

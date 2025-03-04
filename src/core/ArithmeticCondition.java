@@ -14,7 +14,7 @@ package core;
 public class ArithmeticCondition {
 
 	private static final String VALID_OPERATORS = "><=";
-	private char operator;
+	private final char operator;
 	private double number;
 
 	/**

@@ -10,8 +10,8 @@ package util;
  */
 public class Range {
 
-	private double min;
-	private double max;
+	private final double min;
+	private final double max;
 
 	/**
 	 * Creates a new range

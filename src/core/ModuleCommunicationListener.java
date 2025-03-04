@@ -16,6 +16,6 @@ public interface ModuleCommunicationListener {
 	 * @param key The name of the variable
 	 * @param newValue New value for the variable
 	 */
-	public void moduleValueChanged(String key, Object newValue);
+    void moduleValueChanged(String key, Object newValue);
 
 }

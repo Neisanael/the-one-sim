@@ -46,8 +46,8 @@ public abstract class ActiveRouter extends MessageRouter {
 	/** sim time when the last TTL check was done */
 	private double lastTtlCheck;
 
-	private MessageTransferAcceptPolicy policy;
-	private EnergyModel energy;
+	private final MessageTransferAcceptPolicy policy;
+	private final EnergyModel energy;
 
 	/**
 	 * Constructor. Creates a new message router based on the settings in
@@ -98,7 +98,7 @@ public abstract class ActiveRouter extends MessageRouter {
 			this.energy.reduceDiscoveryEnergy();
 		}
 	}
-
+	
 	@Override
 	public boolean requestDeliverableMessages(Connection con) {
 		if (isTransferring()) {
@@ -208,12 +208,8 @@ public abstract class ActiveRouter extends MessageRouter {
 		if (this.getNrofMessages() == 0) {
 			return false;
 		}
-		if (this.getConnections().size() == 0) {
-			return false;
-		}
-
-		return true;
-	}
+        return this.getConnections().size() != 0;
+    }
 
 	/**
 	 * Checks if router "wants" to start receiving message (i.e. router

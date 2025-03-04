@@ -27,8 +27,8 @@ public class ExternalPathMovement extends MovementModel {
 	public static final String ACTIVITY_FILE_S = "activeFile";
 
 	// Settings
-	private String traceFile;
-	private String activeFile;
+	private final String traceFile;
+	private final String activeFile;
 
 	// Node's paths
 	private List<List<ExternalPathMovementReader.Entry>> paths;

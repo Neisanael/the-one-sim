@@ -91,9 +91,9 @@ public abstract class Connection {
 	 * Calculate the current transmission speed from the information
 	 * given by the interfaces, and calculate the missing data amount.
 	 */
-	public void update() {};
+	public void update() {}
 
-	/**
+    /**
      * Aborts the transfer of the currently transferred message.
      */
 	public void abortTransfer() {

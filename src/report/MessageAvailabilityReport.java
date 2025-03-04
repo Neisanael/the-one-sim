@@ -27,9 +27,9 @@ public class MessageAvailabilityReport extends MessageLocationReport {
 	 * hosts are selected for sampling message availability */
 	public static final String NROF_HOSTS_S = "nrofHosts";
 
-	private int nrofHosts;
+	private final int nrofHosts;
 	private Set<DTNHost> trackedHosts;
-	private Random rng;
+	private final Random rng;
 
 	public MessageAvailabilityReport() {
 		super();

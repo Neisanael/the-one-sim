@@ -6,7 +6,7 @@ import static core.NAKT.Util.EncryptionUtil.hashSha1;
 
 public class KeyTree {
 
-    private int lcnum;
+    private final int lcnum;
 
     public KeyTree(int lcnum) {
         this.lcnum = lcnum;

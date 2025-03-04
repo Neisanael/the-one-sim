@@ -153,7 +153,7 @@ extends SamplingReport {
 
 		for (int g_x = 0; g_x < this.horizontalCount; g_x++) {
 			for (int g_y = 0; g_y < this.verticalCount; g_y++) {
-				String line = "" + g_x + " " + g_y + " "
+				String line = g_x + " " + g_y + " "
 						+ averages[g_x][g_y];
 				if (!this.onlyAverage) {
 					for (final int[][] sample : this.samples) {

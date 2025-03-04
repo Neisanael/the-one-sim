@@ -38,27 +38,27 @@ public class MapNodeTest extends TestCase {
 	}
 
 	public void testAddNeighbor() {
-		assertTrue(n1.getNeighbors().size() == 0);
-		assertTrue(n2.getNeighbors().size() == 0);
+        assertEquals(0, n1.getNeighbors().size());
+        assertEquals(0, n2.getNeighbors().size());
 
 		// n1--n2
 		n1.addNeighbor(n2);
 		n2.addNeighbor(n1);
-		assertTrue(n1.getNeighbors().size() == 1);
-		assertTrue(n2.getNeighbors().size() == 1);
+        assertEquals(1, n1.getNeighbors().size());
+        assertEquals(1, n2.getNeighbors().size());
 
 		// n1--n2--n3
 		n2.addNeighbor(n3);
 		n3.addNeighbor(n2);
-		assertTrue(n2.getNeighbors().size() == 2);
-		assertTrue(n3.getNeighbors().size() == 1);
-		assertTrue(n1.getNeighbors().size() == 1);
+        assertEquals(2, n2.getNeighbors().size());
+        assertEquals(1, n3.getNeighbors().size());
+        assertEquals(1, n1.getNeighbors().size());
 
 		// add same again
 		n2.addNeighbor(n3);
 		n3.addNeighbor(n2);
-		assertTrue(n2.getNeighbors().size() == 2);
-		assertTrue(n3.getNeighbors().size() == 1);
+        assertEquals(2, n2.getNeighbors().size());
+        assertEquals(1, n3.getNeighbors().size());
 	}
 
 	public void testNodeByCoord() {

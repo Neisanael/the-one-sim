@@ -287,13 +287,9 @@ public class MessageTransferAcceptPolicy {
 			return false;
 		}
 
-		if (m.getTo() != to &&
-				!checkHopCountPolicy(m, this.hopCountSendPolicy)){
-			return false;
-		}
-
-		return true;
-	}
+        return m.getTo() == to ||
+                checkHopCountPolicy(m, this.hopCountSendPolicy);
+    }
 
 	/**
 	 * Returns true if the given message is OK to receive from "from" to
@@ -314,12 +310,8 @@ public class MessageTransferAcceptPolicy {
 			return false;
 		}
 
-		if (m.getTo() != to &&
-				!checkHopCountPolicy(m, this.hopCountReceivePolicy)) {
-			return false;
-		}
-
-		return true;
-	}
+        return m.getTo() == to ||
+                checkHopCountPolicy(m, this.hopCountReceivePolicy);
+    }
 
 }
