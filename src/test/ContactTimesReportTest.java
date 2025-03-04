@@ -118,12 +118,12 @@ public class ContactTimesReportTest extends TestCase {
 		for (String value : ctValues) {
 			assertEquals(value,ctReader.readLine());
 		}
-		assertEquals(null,ctReader.readLine()); // no more times left
+        assertNull(ctReader.readLine()); // no more times left
 
 		for (String value : ictValues) {
 			assertEquals(value,ictReader.readLine());
 		}
-		assertEquals(null,ictReader.readLine());
+        assertNull(ictReader.readLine());
 	}
 
 	public void testGranularity2() throws IOException {
@@ -141,7 +141,7 @@ public class ContactTimesReportTest extends TestCase {
 
 		assertEquals("0.0 4",ctReader.readLine());
 		assertEquals("10.0 0",ctReader.readLine());
-		assertEquals(null,ctReader.readLine());
+        assertNull(ctReader.readLine());
 	}
 
 	public void testGanularity05() throws IOException {

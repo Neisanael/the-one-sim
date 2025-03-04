@@ -100,7 +100,7 @@ public abstract class MessageRouter {
 	/** TTL for all messages */
 	protected int msgTtl;
 	/** Queue mode for sending messages */
-	private int sendQueueMode;
+	private final int sendQueueMode;
 
 	/** applications attached to the host */
 	private HashMap<String, Collection<Application>> applications = null;
@@ -134,9 +134,9 @@ public abstract class MessageRouter {
 
 			String mode = s.getSetting(SEND_QUEUE_MODE_S);
 
-			if (mode.trim().toUpperCase().equals(STR_Q_MODE_FIFO)) {
+			if (mode.trim().equalsIgnoreCase(STR_Q_MODE_FIFO)) {
 				this.sendQueueMode = Q_MODE_FIFO;
-			} else if (mode.trim().toUpperCase().equals(STR_Q_MODE_RANDOM)){
+			} else if (mode.trim().equalsIgnoreCase(STR_Q_MODE_RANDOM)){
 				this.sendQueueMode = Q_MODE_RANDOM;
 			} else {
 				this.sendQueueMode = s.getInt(SEND_QUEUE_MODE_S);

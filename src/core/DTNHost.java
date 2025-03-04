@@ -20,21 +20,21 @@ import static core.Constants.DEBUG;
  */
 public class DTNHost implements Comparable<DTNHost> {
 	private static int nextAddress = 0;
-	private int address;
+	private final int address;
 
 	private Coord location; 	// where is the host
 	private Coord destination;	// where is it going
 
 	private MessageRouter router;
-	private MovementModel movement;
+	private final MovementModel movement;
 	private Path path;
 	private double speed;
 	private double nextTimeToMove;
 	private String name;
-	private List<MessageListener> msgListeners;
-	private List<MovementListener> movListeners;
-	private List<NetworkInterface> net;
-	private ModuleCommunicationBus comBus;
+	private final List<MessageListener> msgListeners;
+	private final List<MovementListener> movListeners;
+	private final List<NetworkInterface> net;
+	private final ModuleCommunicationBus comBus;
 
 	static {
 		DTNSim.registerForReset(DTNHost.class.getCanonicalName());

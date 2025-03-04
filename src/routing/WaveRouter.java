@@ -32,8 +32,8 @@ public class WaveRouter extends ActiveRouter {
 	 * immunity time) nodes accept custody for new incoming messages.
 	 */
 	public static final String CUSTODY_S = "custodyFraction";
-	private double immunityTime;
-	private double custodyFraction;
+	private final double immunityTime;
+	private final double custodyFraction;
 	/** map of recently received messages and their receive times */
 	private Map<String, Double> recentMessages;
 	/** IDs of the messages this host has custody for */

@@ -28,10 +28,10 @@ import core.SimClock;
  */
 @SuppressWarnings("serial")
 public class RoutingInfoWindow extends JFrame implements ActionListener {
-	private DTNHost host;
-	private JButton refreshButton;
-	private JCheckBox autoRefresh;
-	private JScrollPane treePane;
+	private final DTNHost host;
+	private final JButton refreshButton;
+	private final JCheckBox autoRefresh;
+	private final JScrollPane treePane;
 	private JTree tree;
 	private Timer refreshTimer;
 	/** how often auto refresh is performed */

@@ -27,7 +27,7 @@ public class EnergyLevelReport extends SnapshotReport
 				throw new SimError("Host " + h +
 						" is not using energy model");
 			}
-			write(h.toString() + " " +  format(value));
+			write(h + " " +  format(value));
 	}
 
 }

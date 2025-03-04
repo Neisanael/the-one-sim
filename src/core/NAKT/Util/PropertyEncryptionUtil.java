@@ -7,8 +7,7 @@ import core.NAKT.KeyEncryption;
 public class PropertyEncryptionUtil {
     public static String processKeyEncryption(Message m) {
         Object property = m.getProperty("keyEncryption");
-        if (property instanceof KeyEncryption<?>) {
-            KeyEncryption<?> keyEncryption = (KeyEncryption<?>) property;
+        if (property instanceof KeyEncryption<?> keyEncryption) {
             return (String) keyEncryption.getEncryptionKey(); // Cast to String
         } else {
             throw new ClassCastException("The 'keyEncryption' property is not of type KeyEncryption");

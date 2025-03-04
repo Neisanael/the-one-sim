@@ -20,14 +20,14 @@ import core.SimClock;
  */
 public class ConnectionTest extends TestCase {
 	public static final double START_TIME = 10.0;
-	private TestDTNHost h[];
-	private CBRConnection c[];
-	private Message m[];
-	private int speed[] = {50, 50, 100, 200, 100};
-	private int size[] = {50, 75, 100, 200, 1000};
-	private int nrof = 5;
+	private TestDTNHost[] h;
+	private CBRConnection[] c;
+	private Message[] m;
+	private final int[] speed = {50, 50, 100, 200, 100};
+	private final int[] size = {50, 75, 100, 200, 1000};
+	private final int nrof = 5;
 	private int index;
-	private SimClock clock = SimClock.getInstance();
+	private final SimClock clock = SimClock.getInstance();
 	private int conCount;
 
 	protected void setUp() throws Exception {
@@ -78,20 +78,20 @@ public class ConnectionTest extends TestCase {
 	}
 
 	public void testStartTransfer() {
-		assertTrue(h[1].recvFrom == h[0]);
-		assertTrue(h[1].recvMessage.getId().equals(m[0].getId()));
-		assertTrue(h[2].recvFrom == h[0]);
-		assertTrue(h[2].recvMessage.getId().equals(m[1].getId()));
+        assertSame(h[1].recvFrom, h[0]);
+        assertEquals(h[1].recvMessage.getId(), m[0].getId());
+        assertSame(h[2].recvFrom, h[0]);
+        assertEquals(h[2].recvMessage.getId(), m[1].getId());
 	}
 
 	public void testAbortTransfer() {
-		assertTrue(h[1].abortedId == null);
+        assertNull(h[1].abortedId);
 		assertFalse(c[0].isMessageTransferred());
 
 		c[0].abortTransfer();
 
-		assertTrue(h[1].abortedId != null);
-		assertTrue(h[1].abortedId.equals(m[0].getId()));
+        assertNotNull(h[1].abortedId);
+        assertEquals(h[1].abortedId, m[0].getId());
 		assertTrue(c[0].isMessageTransferred());
 	}
 

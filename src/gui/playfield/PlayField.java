@@ -34,16 +34,16 @@ import core.World;
 public class PlayField extends JPanel {
 	public static final int PLAYFIELD_OFFSET = 10;
 
-	private World w;
-	private DTNSimGUI gui;
+	private final World w;
+	private final DTNSimGUI gui;
 
-	private Color bgColor = Color.WHITE;
+	private final Color bgColor = Color.WHITE;
 
-	private List<PlayFieldGraphic> overlayGraphics;
+	private final List<PlayFieldGraphic> overlayGraphics;
 	private boolean autoClearOverlay;	// automatically clear overlay graphics
 	private MapGraphic mapGraphic;
 	private boolean showMapGraphic;
-	private ScaleReferenceGraphic refGraphic;
+	private final ScaleReferenceGraphic refGraphic;
 	private boolean focusOnClick;
 
 	private BufferedImage underlayImage;

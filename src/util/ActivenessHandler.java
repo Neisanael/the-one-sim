@@ -48,7 +48,7 @@ public class ActivenessHandler {
 	 */
 	public static final String ACTIVE_PERIODS_OFFSET_S = "activePeriodsOffset";
 
-	private Queue<TimeRange> activeTimes;
+	private final Queue<TimeRange> activeTimes;
 	private int [] activePeriods;
 	private int activePeriodsOffset;
 
@@ -124,11 +124,7 @@ public class ActivenessHandler {
 				int timeIndex =
 					(SimClock.getIntTime() + this.activePeriodsOffset + offset)%
 					(this.activePeriods[0] + this.activePeriods[1]);
-				if (timeIndex <= this.activePeriods[0]) {
-					return true;
-				} else {
-					return false;
-				}
+                return timeIndex <= this.activePeriods[0];
 			}
 		}
 
@@ -152,8 +148,8 @@ public class ActivenessHandler {
 	 * Class for handling time ranges
 	 */
 	private class TimeRange {
-		private double start;
-		private double end;
+		private final double start;
+		private final double end;
 
 		/**
 		 * Constructor.
@@ -172,11 +168,8 @@ public class ActivenessHandler {
 		 * @return true if the time is within limits
 		 */
 		public boolean isInRange(double time) {
-			if (time < start || time > end ) {
-				return false; // out of range
-			}
-			return true;
-		}
+            return !(time < start) && !(time > end); // out of range
+        }
 
 		/**
 		 * Returns true if given time is bigger than end the end time

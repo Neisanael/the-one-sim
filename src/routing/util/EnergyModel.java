@@ -49,11 +49,11 @@ public class EnergyModel implements ModuleCommunicationListener {
 	/** current energy level */
 	private double currentEnergy;
 	/** energy usage per scan */
-	private double scanEnergy;
+	private final double scanEnergy;
 	/** energy usage per transmitted byte */
-	private double transmitEnergy;
+	private final double transmitEnergy;
 	/** energy usage per device discovery response */
-	private double scanResponseEnergy;
+	private final double scanResponseEnergy;
 	/** sim time of the last energy updated */
 	private double lastUpdate;
 	private ModuleCommunicationBus comBus;
@@ -113,7 +113,7 @@ public class EnergyModel implements ModuleCommunicationListener {
 	 * @param range The min and max values of the range, or if only one value
 	 * is given, that is used as the energy level
 	 */
-	protected void setEnergy(double range[]) {
+	protected void setEnergy(double[] range) {
 		if (range.length == 1) {
 			this.currentEnergy = range[0];
 		}

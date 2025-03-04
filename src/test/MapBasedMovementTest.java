@@ -37,11 +37,11 @@ public class MapBasedMovementTest extends TestCase {
 	"LINESTRING (2.0 1.0, 2.0 0.0, 3.0 0.0, 3.0 1.0)\n";
 
 	private MapNode n1;
-	private Coord c1 = new Coord(1,1);
+	private final Coord c1 = new Coord(1,1);
 	private MapNode n2;
-	private Coord c2 = new Coord(2,1);
+	private final Coord c2 = new Coord(2,1);
 	private MapNode n6;
-	private Coord c6 = new Coord(3,1);
+	private final Coord c6 = new Coord(3,1);
 
 	private MapBasedMovement mbm;
 	private SimMap map;
@@ -176,20 +176,20 @@ public class MapBasedMovementTest extends TestCase {
 		SimMap secondMap = mbm.getMap();
 
 		// second call should return the same map object
-		assertTrue(firstMap == secondMap);
+        assertSame(firstMap, secondMap);
 
 		writeToNewFile(); // change the map file
 		mbm = (MapBasedMovement)s.createIntializedObject(mmbClass);
 		SimMap thirdMap = mbm.getMap();
 
 		// after reading from different file, should return a different instance
-		assertTrue(firstMap != thirdMap);
+        assertNotSame(firstMap, thirdMap);
 
 		mbm = (MapBasedMovement)s.createIntializedObject(mmbClass);
 		SimMap fourthMap = mbm.getMap();
 
 		// now should return the same map object as with previous read
-		assertTrue(thirdMap == fourthMap);
+        assertSame(thirdMap, fourthMap);
 	}
 
 	public void testHostMoving() {
