@@ -6,6 +6,7 @@ package input;
 
 import core.DTNHost;
 import core.Message;
+import core.Publisher.PublisherHost;
 import core.World;
 
 /**
@@ -43,7 +44,13 @@ public class MessageCreateEvent extends MessageEvent {
 
 		Message m = new Message(from, to, this.id, this.size);
 		m.setResponseSize(this.responseSize);
-		from.createNewMessage(m);
+		if(from instanceof PublisherHost){
+			PublisherHost publisherHost = (PublisherHost) from;
+			// Call the createNewMessage method
+			publisherHost.createNewMessage(m);
+		}else{
+			from.createNewMessage(m);
+		}
 	}
 
 	@Override

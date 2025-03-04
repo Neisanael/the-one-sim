@@ -1,12 +1,20 @@
 package core.Publisher;
 
-import core.*;
+import core.DTNHost;
+import core.MovementListener;
+import core.MessageListener;
+import core.NAKT.Util.PropertyEncryptionUtil;
+import core.NetworkInterface;
+import core.ModuleCommunicationBus;
+import core.Message;
 import movement.MovementModel;
 import routing.MessageRouter;
+import core.Topic.util.PropertyPSGuardUtil;
 
 import java.util.List;
 
 public class PublisherHost extends DTNHost {
+
     /**
      * Creates a new DTNHost.
      *
@@ -22,21 +30,15 @@ public class PublisherHost extends DTNHost {
         super(msgLs, movLs, groupId, interf, comBus, mmProto, mRouterProto);
     }
 
-
     public void createNewMessage(Message m) {
-        m.addProperty("type", "publisher");
-        super.router.createNewMessage(m);
+        m.addProperty("topic", PropertyPSGuardUtil.propertyTopic());
+        m.addProperty("numeric", PropertyPSGuardUtil.propertyPublisher());
+        super.getRouter().createNewMessage(m);
     }
 
-    private Message addNewTopicInProperty(){
-        return
+    public void receiveKeyEncryption(Message m){
+        PropertyEncryptionUtil.processKeyEncryption(m);
     }
 
-    public Message registerTopic(Message msg) {
-        return null;
-    }
 
-    public Message unregisterTopic(Message msg) {
-        return null;
-    }
 }
